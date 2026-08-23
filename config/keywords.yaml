@@ -92,6 +92,6 @@ geo:
     - anywhere
 settings:
   max_items_per_digest: 15
-  send_empty_digest: false
+  send_empty_digest: true
   state_retention_days: 30
   require_entry_signal: false

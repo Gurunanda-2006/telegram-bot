@@ -63,20 +63,28 @@ def main():
         for c in comp.get("companies", [])
         if c.get("careers")
     }
-    text = build_digest(shown, len(new), label, careers)
 
-    send_empty = settings.get("send_empty_digest", False)
-    if shown or send_empty:
+    send_empty = settings.get("send_empty_digest", True)
+    if shown:
+        text = build_digest(shown, len(new), label, careers)
+    elif send_empty:
+        text = (
+            "📭 Placement scan complete — "
+            f"{label}\nNo new 2027-batch openings this cycle.\n"
+            f"Scanned {len(raw)} listings · next check in 3 hours."
+        )
+    else:
+        text = ""
+
+    if text:
         if dry_run:
             print("\n--- DRY RUN (no secrets set) ---")
             print(text)
-        elif shown and not send_message(token, chat_id, text):
+        elif not send_message(token, chat_id, text):
             logging.error("telegram delivery failed; state not updated; will retry next run")
             sys.exit(1)
-    else:
-        print("no new openings this cycle")
+        write_digest(os.path.join(ROOT, "digests"), stamp, text)
 
-    write_digest(os.path.join(ROOT, "digests"), stamp, text)
     store.mark(i["id"] for i in shown)
     if not dry_run:
         store.prune()
