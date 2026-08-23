@@ -1,0 +1,70 @@
+companies:
+  - name: PhonePe
+    ats: greenhouse
+    board: phonepe
+    careers: https://www.phonepe.com/careers/job-openings/
+  - name: Groww
+    ats: greenhouse
+    board: groww
+    careers: https://groww.in/careers
+  - name: Postman
+    ats: greenhouse
+    board: postman
+    careers: https://www.postman.com/company/careers/
+  - name: Coursera
+    ats: greenhouse
+    board: coursera
+    careers: https://www.coursera.org/careers
+  - name: CRED
+    ats: lever
+    board: cred
+    careers: https://careers.cred.club/
+  - name: Meesho
+    ats: lever
+    board: meesho
+    careers: https://www.meesho.io/jobs
+  - name: Paytm
+    ats: smartrecruiters
+    board: paytm
+    careers: https://paytm.com/careers
+  - name: Upstox
+    ats: smartrecruiters
+    board: upstox
+    careers: https://upstox.com/about-us/careers/
+  - name: Dream11
+    ats: smartrecruiters
+    board: dream11
+    careers: https://www.dreamsports.group/careers/
+  - name: Amazon
+    careers: https://www.amazon.jobs/en/
+  - name: Google
+    careers: https://www.google.com/about/careers/applications/
+  - name: Microsoft
+    careers: https://jobs.careers.microsoft.com/global/en/search
+  - name: Flipkart
+    careers: https://www.flipkartcareers.com/
+  - name: Swiggy
+    careers: https://careers.swiggy.com/
+  - name: Razorpay
+    careers: https://razorpay.com/jobs/
+  - name: Zerodha
+    careers: https://zerodha.com/careers
+  - name: Zoho
+    careers: https://www.zoho.com/careers/
+  - name: Atlassian
+    careers: https://www.atlassian.com/company/careers/all-jobs
+  - name: Adobe
+    careers: https://careers.adobe.com/us/en
+  - name: Goldman Sachs
+    careers: https://www.goldmansachs.com/careers/
+news:
+  base_url: https://news.google.com/rss/search
+  hl: en-IN
+  gl: IN
+  ceid: IN:en
+  queries:
+    - '"off campus drive" 2027'
+    - '"2027 batch" hiring software engineer'
+    - '"2027 batch" internship'
+    - 'freshers hiring "software engineer" India'
+    - 'off campus placement drive software India'

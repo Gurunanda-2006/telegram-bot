@@ -1,0 +1,97 @@
+role_keywords:
+  - software engineer
+  - software development engineer
+  - sde
+  - software developer
+  - frontend developer
+  - front end developer
+  - front-end developer
+  - frontend engineer
+  - front-end engineer
+  - full stack developer
+  - full-stack developer
+  - full stack engineer
+  - full-stack engineer
+  - web developer
+  - web development engineer
+  - automation engineer
+  - qa automation
+level_keywords:
+  - intern
+  - internship
+  - trainee
+  - graduate
+  - fresher
+  - campus
+  - university
+  - new grad
+  - apprentice
+  - entry level
+  - associate software engineer
+level_patterns:
+  - '\bsde\s*[-]?\s*[i1]\b'
+  - '\b(?:engineer|developer)\s*[-]?\s*i\b'
+  - '[(]?\s*[0-1]\s*(?:-|to)\s*[0-2]\s*(?:years?|yrs?)'
+exclude_keywords:
+  - recruiter
+  - talent acquisition
+  - sales executive
+  - business development
+  - account manager
+  - manager
+  - director
+  - head of
+  - principal
+  - staff
+  - architect
+  - senior
+exclude_patterns:
+  - '\b(?:sde|software development engineer|engineer|developer)\s*[-]?\s*(?:ii|iii|iv|2|3|4)\b'
+  - '\b(?:[3-9]|1\d)\s*(?:-|to)\s*[0-9]?\d\s*(?:years?|yrs?)'
+  - '\b\d\+\s*(?:years?|yrs?|yoe)'
+hiring_signals:
+  - hiring
+  - recruit
+  - off campus
+  - off-campus
+  - placement drive
+  - campus drive
+  - walk-in
+  - openings
+  - vacancy
+  - vacancies
+  - apply
+  - registration
+  - internship
+  - job opening
+batch_patterns:
+  - "2027"
+geo:
+  india_terms:
+    - india
+    - bangalore
+    - bengaluru
+    - mumbai
+    - pune
+    - hyderabad
+    - chennai
+    - delhi
+    - noida
+    - gurugram
+    - gurgaon
+    - kolkata
+    - ahmedabad
+    - jaipur
+    - indore
+    - kochi
+    - coimbatore
+  remote_terms:
+    - remote
+    - work from home
+    - wfh
+    - anywhere
+settings:
+  max_items_per_digest: 15
+  send_empty_digest: false
+  state_retention_days: 30
+  require_entry_signal: false
