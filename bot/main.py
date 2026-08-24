@@ -5,7 +5,7 @@ from datetime import datetime, timezone
 
 import yaml
 
-from digest import build_digest, write_digest
+from digest import build_digest, build_still_open_digest, write_digest
 from filters import ItemFilter, classify, sort_key
 from sources.ats import fetch_all_ats
 from sources.news_rss import fetch_news
@@ -52,6 +52,15 @@ def main():
     store = SeenStore(store_path, retention)
     new = [i for i in kept if not store.seen(i["id"])]
 
+    still_open_max = settings.get("still_open_max", 4)
+    ats_seen = [i for i in kept if i["source"] == "ats" and store.seen(i["id"])]
+    news_seen = [
+        i
+        for i in kept
+        if i["source"] == "news" and i.get("news_tier") == 0 and store.seen(i["id"])
+    ]
+    still_open = (ats_seen + news_seen)[:still_open_max]
+
     now = datetime.now(timezone.utc)
     stamp = now.strftime("%Y-%m-%d-%H%M")
     label = now.strftime("%Y-%m-%d %H:%M UTC")
@@ -66,12 +75,14 @@ def main():
 
     send_empty = settings.get("send_empty_digest", True)
     if shown:
-        text = build_digest(shown, len(new), label, careers)
+        text = build_digest(shown, len(new), label, careers, still_open)
+    elif send_empty and still_open:
+        text = build_still_open_digest(label, len(raw), still_open)
     elif send_empty:
         text = (
-            "📭 Placement scan complete — "
-            f"{label}\nNo new 2027-batch openings this cycle.\n"
-            f"Scanned {len(raw)} listings · next check in 3 hours."
+            f"🟢 No new openings or significant updates in the last 3 hours — {label}\n"
+            f"Scanned {len(raw)} listings from the internet.\n"
+            f"Next check in 3 hours."
         )
     else:
         text = ""

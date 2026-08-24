@@ -1,7 +1,9 @@
+import calendar
 import hashlib
 import html
 import logging
 import re
+import time
 import urllib.parse
 
 import feedparser
@@ -33,6 +35,7 @@ def fetch_news(news_cfg, keywords_cfg, company_names):
     hl = news_cfg.get("hl", "en-IN")
     gl = news_cfg.get("gl", "IN")
     ceid = news_cfg.get("ceid", "IN:en")
+    max_age = news_cfg.get("max_age_days", 7)
     for query in news_cfg.get("queries", []):
         url = (
             f"{base}?q={urllib.parse.quote(query)}"
@@ -48,6 +51,11 @@ def fetch_news(news_cfg, keywords_cfg, company_names):
                 link = entry.get("link")
                 if not title or not link:
                     continue
+                published = entry.get("published_parsed")
+                if published and max_age:
+                    age_days = (time.time() - calendar.timegm(published)) / 86400
+                    if age_days > max_age:
+                        continue
                 lowered = title.lower()
                 company = next(
                     (orig for low, orig in known.items() if low in lowered), ""

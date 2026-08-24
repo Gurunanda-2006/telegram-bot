@@ -64,6 +64,11 @@ hiring_signals:
   - registration
   - internship
   - job opening
+  - careers
+  - register
+  - last date
+  - applications open
+  - looking for
 batch_patterns:
   - "2027"
 geo:
@@ -95,3 +100,4 @@ settings:
   send_empty_digest: true
   state_retention_days: 30
   require_entry_signal: false
+  still_open_max: 4

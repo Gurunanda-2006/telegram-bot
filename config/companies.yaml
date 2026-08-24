@@ -62,9 +62,13 @@ news:
   hl: en-IN
   gl: IN
   ceid: IN:en
+  max_age_days: 7
   queries:
     - '"off campus drive" 2027'
     - '"2027 batch" hiring software engineer'
     - '"2027 batch" internship'
     - 'freshers hiring "software engineer" India'
     - 'off campus placement drive software India'
+    - 'freshers software engineer hiring India when:7d'
+    - 'software engineer internship India when:7d'
+    - 'IT freshers hiring India when:7d'
